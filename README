@@ -95,3 +95,8 @@ clj-ripple syntax and its equivalent Ripple source code can be understood by rea
   ((10 20 30) [rdf/rest 0 1] rdf/first)
   )
 
+
+**For more information about Ripple, please visit the following websites:**
+* http://ripple.fortytwo.net/
+* https://github.com/joshsh/ripple/wiki
+
