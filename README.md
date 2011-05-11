@@ -23,6 +23,11 @@ Examples
 
 clj-ripple syntax and its equivalent Ripple source code can be understood by reading the following examples:
 
+	; Before code is executed, Ripple must be initialized through the init-ripple function. When passed no parameters, it initializes Ripple
+	; with a default configuration (see Ripple wiki's "Running Ripple")
+	; For a custom configuration, pass the properties as a Clojure hash-map.
+	(init-ripple)
+
 	@prefix foaf: <http://xmlns.com/foaf/0.1/>
 	@list dan: <http://danbri.org/foaf.rdf#danbri>
 	:dan. foaf:knows. foaf:name.
@@ -55,7 +60,7 @@ clj-ripple syntax and its equivalent Ripple source code can be understood by rea
 	  n 1 add. n mul. 2 div.
 	4 :triangle.
 	(ripple
-	  (def triangle [n] ; To created a parametered list, give it an args vector.
+	  (def triangle [n] ; To create a parametered list, give it an args vector.
 	    n 1 add n mul 2 div)
 	  (4 !/triangle)
 	  )
@@ -75,8 +80,8 @@ clj-ripple syntax and its equivalent Ripple source code can be understood by rea
 	  (5 !/fact)
 	  )
 
-	; Top level lists are evaluated as single lines of Ripple code. Different lines must be specified as different lists to avoid confusion*
-	; Lists inside lists, however, are interpreted as Ripple lists.*
+	; Top level lists are evaluated as single lines of Ripple code. Different lines must be specified as different lists to avoid confusion
+	; Lists inside lists, however, are interpreted as Ripple lists.
 
 	@show prefixes
 	@show contexts
