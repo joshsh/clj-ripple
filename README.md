@@ -23,80 +23,83 @@ Examples
 
 clj-ripple syntax and its equivalent Ripple source code can be understood by reading the following examples:
 
-> @prefix foaf: <http://xmlns.com/foaf/0.1/>
-> @list dan: <http://danbri.org/foaf.rdf#danbri>
-> :dan. foaf:knows. foaf:name.
-(ripple
-  (prefix foaf "http://xmlns.com/foaf/0.1/") ; An string passed to prefix is inmediately put inside <>
-  (def dan @"http://danbri.org/foaf.rdf#danbri") ; Since regular strings can be used as data, in non-prefix situations, strings must be dereferenced in order to be evaluated as URLs.
-  (!/dan foaf/knows foaf/name) ; !/ is the default namespace.
-  )
+	@prefix foaf: <http://xmlns.com/foaf/0.1/>
+	@list dan: <http://danbri.org/foaf.rdf#danbri>
+	:dan. foaf:knows. foaf:name.
+	(ripple
+	  (prefix foaf "http://xmlns.com/foaf/0.1/") ; An string passed to prefix is inmediately put inside <>
+	  (def dan @"http://danbri.org/foaf.rdf#danbri") ; Since regular strings can be used as data, in non-prefix situations, strings must be dereferenced in order to be evaluated as URLs.
+	  (!/dan foaf/knows foaf/name) ; !/ is the default namespace.
+	  )
 
-> @list days: "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday"
-> 1 2 3 :days.
-(ripple
-  (def days "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday")
-  (1 2 3 !/days) ; By default, lists and other primitives are applied the . (op) operator.
-  )
+	@list days: "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday"
+	1 2 3 :days.
+	(ripple
+		(def days "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday")
+		(1 2 3 !/days) ; By default, lists and other primitives are applied the . (op) operator.
+		)
 
-> @list days: "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday"
-> 1 2 3 :days
-(ripple
-  (def days "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday")
-  (1 2 3 '!/days) ; But quoting them removes the . (op) operator.
-  )
+	@list days: "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday"
+	1 2 3 :days
+	(ripple
+		(def days "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday")
+		(1 2 3 '!/days) ; But quoting them removes the . (op) operator.
+		)
 
-> 16 dup. mul.
-(ripple
-  (16 dup mul)
-  )
+	16 dup. mul.
+	(ripple
+		(16 dup mul)
+		)
 
-> @list n triangle:
->   n 1 add. n mul. 2 div.
-> 4 :triangle.
-(ripple
-  (def triangle [n] ; To created a parametered list, give it an args vector.
-    n 1 add n mul 2 div)
-  (4 !/triangle)
-  )
+	@list n triangle:
+		n 1 add. n mul. 2 div.
+	4 :triangle.
+	(ripple
+		(def triangle [n] ; To created a parametered list, give it an args vector.
+		  n 1 add n mul 2 div)
+		(4 !/triangle)
+		)
 
-> @list fact:
->   dup. 0 equal.
->   (1 popd.)
->   (dup. 1 sub. :fact. mul.)
->   branch.
-> 5 :fact.
-(ripple
-  (def fact
-    dup 0 equal
-    (1 popd)
-    (dup 1 sub !/fact mul)
-    branch)
-  (5 !/fact)
-  )
+	@list fact:
+		dup. 0 equal.
+		(1 popd.)
+		(dup. 1 sub. :fact. mul.)
+		branch.
+	5 :fact.
+	(ripple
+		(def fact
+		  dup 0 equal
+		  (1 popd)
+		  (dup 1 sub !/fact mul)
+		  branch)
+		(5 !/fact)
+		)
 
 *Top level lists are evaluated as single lines of Ripple code. Different lines must be specified as different lists to avoid confusion*
 *Lists inside lists, however, are interpreted as Ripple lists.*
 
-> @show prefixes
-> @show contexts
-(ripple
-  (show :prefixes)
-  (show :contexts)
-  )
+	@show prefixes
+	@show contexts
+	(ripple
+		(show :prefixes)
+		(show :contexts)
+		)
 
-> (10 20 30) rdf:rest{2} rdf:first.
-(ripple
-  ((10 20 30) [rdf/rest 2] rdf/first)
-  )
+	(10 20 30) rdf:rest{2} rdf:first.
+	(ripple
+		((10 20 30) [rdf/rest 2] rdf/first)
+		)
 
-> (10 20 30) rdf:rest{0,1} rdf:first.
-(ripple
-  ((10 20 30) [rdf/rest 0 1] rdf/first)
-  )
+	(10 20 30) rdf:rest{0,1} rdf:first.
+	(ripple
+		((10 20 30) [rdf/rest 0 1] rdf/first)
+		)
 
 
-**For more information about Ripple, please visit the following websites:**
+Further Information
+-------------------
+
+For more information about Ripple, please visit the following websites:
 * http://ripple.fortytwo.net/
 * https://github.com/joshsh/ripple/wiki
 
