@@ -8,9 +8,9 @@ This allows for easy embedding of Ripple into Clojure programs.
 Syntax
 ------
 
-The ripple macro takes specially formatted Clojure source code and translates (using the translate function) it into the equivalent Ripple source code.
-It then executes it using the run-ripple function, inside an evironment created with the with-ripple macro, which dynamically binds the *ripple* variable
-to a fresh QueryPipe and the *sink* variable to a fresh Collector<T,E> sink.
+The ripple macro takes specially formatted Clojure source code and translates it (using the translate function) into the equivalent Ripple source code.
+It then executes it using the run-ripple function, inside an evironment created with the with-ripple macro, which dynamically binds the `*ripple*` variable
+to a fresh QueryPipe and the `*sink*` variable to a fresh `Collector<T,E>` sink.
 
 Although all of those components (with-ripple, run-ripple & translate) can be used separately, it is best to simple use the ripple macro.
 
