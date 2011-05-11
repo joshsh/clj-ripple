@@ -51,7 +51,10 @@
   "Given a value or a list, transforms it into its Clojure equivalent."
   [value]
   (cond
-    (instance? RDFValue value) (-> value .toString (.substring 1 (-> value .toString .length (- 1))))
+    (instance? RDFValue value) (let [vstr (.toString value)]
+                                 (if (and (.startsWith vstr "\"") (.endsWith vstr "\""))
+                                   (.substring vstr 1 (-> value .toString .length (- 1)))
+                                   vstr))
     (instance? SesameNumericValue value) (cond
                                            (= NumericValue$Type/INTEGER (.getDatatype value)) (.intValue value)
                                            (= NumericValue$Type/LONG (.getDatatype value)) (.longValue value)
