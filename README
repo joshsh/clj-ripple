@@ -81,8 +81,8 @@ clj-ripple syntax and its equivalent Ripple source code can be understood by rea
 > @show prefixes
 > @show contexts
 (ripple
-	(show :prefixes)
-	(show :contexts)
+  (show :prefixes)
+  (show :contexts)
 	)
 
 > (10 20 30) rdf:rest{2} rdf:first.
