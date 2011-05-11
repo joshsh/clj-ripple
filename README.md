@@ -75,8 +75,8 @@ clj-ripple syntax and its equivalent Ripple source code can be understood by rea
 		(5 !/fact)
 		)
 
-*Top level lists are evaluated as single lines of Ripple code. Different lines must be specified as different lists to avoid confusion*
-*Lists inside lists, however, are interpreted as Ripple lists.*
+	; Top level lists are evaluated as single lines of Ripple code. Different lines must be specified as different lists to avoid confusion*
+	; Lists inside lists, however, are interpreted as Ripple lists.*
 
 	@show prefixes
 	@show contexts
@@ -100,6 +100,6 @@ Further Information
 -------------------
 
 For more information about Ripple, please visit the following websites:
-* http://ripple.fortytwo.net/
-* https://github.com/joshsh/ripple/wiki
+1. http://ripple.fortytwo.net/
+2. https://github.com/joshsh/ripple/wiki
 
