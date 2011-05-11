@@ -5,14 +5,19 @@ clj-ripple
 clj-ripple is a library for translating Clojure source code into Ripple source code, which can then be executed.
 This allows for easy embedding of Ripple into Clojure programs.
 
+Usage
+-----
+
+Simply add this to your leiningen deps: `[clj-ripple "0.1.0-SNAPSHOT"] `
+
 Syntax
 ------
 
-The ripple macro takes specially formatted Clojure source code and translates it (using the translate function) into the equivalent Ripple source code.
-It then executes it using the run-ripple function, inside an evironment created with the with-ripple macro, which dynamically binds the `*ripple*` variable
-to a fresh QueryPipe and the `*sink*` variable to a fresh `Collector<T,E>` sink.
+The `ripple` macro takes specially formatted Clojure source code and translates it (using the `translate` function) into the equivalent Ripple source code.
+It then executes it using the `run-ripple` function, inside an evironment created with the `with-ripple` macro, which dynamically binds the `*ripple*` var
+to a fresh `QueryPipe` and the `*sink*` var to a fresh `Collector<T,E>` sink.
 
-Although all of those components (with-ripple, run-ripple & translate) can be used separately, it is best to simple use the ripple macro.
+Although all of those components (`with-ripple`, `run-ripple` & `translate`) can be used separately, it is best to simple use the `ripple` macro.
 
 The result is return as a Clojure lazy sequence containing all the stacks as sequences.
 The topmost elements in the stacks appear first and are followed by the elements at the bottom.
